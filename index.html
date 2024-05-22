@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="./style/reset.css">
+		<link rel="stylesheet" href="./style/style.css">
+		<title>saicoroPuzzle</title>
+	</head>
+	<body>
+		<div class="resultView">
+			<h1 class="result title">RESULT</h1>
+			<div class="resultWrap">
+				<div class="resultFrame">
+					<p class="resultGameMode">
+						<span class="heading"> MODE :</span>
+						<span class="userVal">dice10Challenge</span>
+					</p>
+					<p class="resultTime">
+						<span class="heading"> TIME :</span>
+						<span class="userVal">00:00.00</span>
+					</p>
+					<p class="resultScore">
+						<span class="heading">SCORE :</span>
+						<span class="userVal">0000000000</span>
+						<span class="hiScoreUpdata">HiScore<br>更新!!</span>
+					</p>
+				</div>
+				<p>ランキングに登録しますか?</p>
+				<button class="gamebtn yes">はい</button><button class="gamebtn no">いいえ</button>
+			</div>
+		</div>
+		<div class="controlView">
+			<div class="valview">test</div>
+			<div class="configWrap"></div>
+			<div class="buttonWrap">
+				<input type="button" id="rebootBtn" class="gamebtn" value="再起動">
+				<input type="button" id="retryBtn_test" class="gamebtn" value="再挑戦">
+				<label class="gameCheck">
+					<input type="checkbox" id="autoCreateDiceBox5s">Dice自動生成(5s毎)
+				</label>
+				<label class="gameCheck">
+					<input type="checkbox" id="autoCreateDiceBox10s">Dice自動生成(10s毎)
+				</label>
+				<label class="gameCheck">
+					<input type="checkbox" id="create2DiceBox">Top2固定Dice生成
+				</label>
+				<label class="gameCheck">
+					<input type="checkbox" id="createDiceByShiftBox">shiftでDice生成
+				</label>
+				<input type="button" id="addDiceBtn" class="gamebtn" value="add Dice">
+				<input type="button" id="titleViewBtn" class="gamebtn" value="titleView">
+				<input type="button" id="gamingViewBtn" class="gamebtn" value="gamingView">
+				<input type="button" id="gameoverViewBtn" class="gamebtn" value="gameoverView">
+			</div>
+		</div>
+		<div class="gameSelectView">
+			<h1 class="gameSelectTitle">select Game Mode</h1>
+			<button id="TimeTrial2min" class="gameSelectBtn">Time Trial 2min</button>
+			<button id="Servival" class="gameSelectBtn">Servival</button>
+			<button id="dice10Challenge" class="gameSelectBtn">10dice challenge</button>
+			<button id="practice" class="gameSelectBtn">practice</button>
+			<button id="DebugMode" class="gameSelectBtn">Debug mode</button>
+		</div>
+		<div class="gameModeInfoView">
+			<div class="TimeTrial2min gameModeInfo">
+				2分間で得点を競うモードです。<br>
+				dice 6個から開始します。<br>
+				5秒毎に新しいdiceが追加されます。<br>
+				床が埋め尽くされるとgameoverです。
+			</div>
+			<div class="Servival gameModeInfo">
+				エンドレスで得点を競うモードです。<br>
+				dice 6個から開始します。<br>
+				10秒毎に新しいdiceが追加されます。<br>
+				床が埋め尽くされるとgameoverです。
+			</div>
+			<div class="dice10Challenge gameModeInfo">
+				ランダムで配置される10個のdiceで<br>
+				全消しまでのタイムを計測します。<br>
+				diceの追加はありません。
+			</div>
+			<div class="practice gameModeInfo">
+				練習モードです。<br>
+				Shiftキーで任意にdiceを追加できます。<br>
+				床が埋め尽くされるとgameoverになります。
+			</div>
+			<div class="DebugMode gameModeInfo">
+				開発用モード。
+			</div>
+			<button id="gameStartBtn">GAME START</button>
+		</div>
+		<div class="gameView">
+			<div class="controlWrap2">
+				<div class="controlPoint"></div>
+			</div>
+			<div class="controlWrap">
+				<div class="flexWrap">
+					<div class="draggableMark"><span class="line"></span></div>
+					<div class="controlbtnWrap">
+						<button id="ArrowUp" class="controlbtn Up"><span class="triangle"></span></button>
+						<button id="ArrowLeft" class="controlbtn Left"><span class="triangle"></span></button>
+						<button id="ArrowRight" class="controlbtn Right"><span class="triangle"></span></button>
+						<button id="ArrowDown" class="controlbtn Down"><span class="triangle"></span></button>
+					</div>
+					<div class="currentView">
+						<div class="currentWrap"></div>
+						<div class="currentFloorWrap">
+							<div class="currentFloor Top">ゆか</div>
+							<div class="currentFloor Down"></div>
+							<div class="currentFloor Right"></div>
+						</div>
+					</div>
+				</div>
+				<div><button id="giveupBtn" class="gamebtn">give up</button></div>
+				<div class="viewControlsView">
+					<input type="button" id="viewUpBtn" class="gamebtn" value="viewUp">
+					<input type="button" id="scaleUpBtn" class="gamebtn" value="+">
+					<br>
+					<input type="button" id="viewLeftBtn" class="gamebtn" value="<">
+					<input type="button" id="viewRightBtn" class="gamebtn" value=">">
+					<br>
+					<input type="button" id="viewDownBtn" class="gamebtn" value="viewDown">
+					<input type="button" id="scaleDownBtn" class="gamebtn" value="-">
+				</div>
+			</div>
+			<div class="scoresWrap">
+				<div class="hiScoreView">
+					<span class="presetText">Hi-SCORE:</span>
+					<span class="gameText">0000000000</span>
+				</div>
+				<div class="scoreView">
+					<span class="presetText">SCORE:</span>
+					<span class="gameText">0000000000</span>
+				</div>
+				<div class="timeView">
+					<span class="presetText">TIME:</span>
+					<span class="gameText">00:00.000</span>
+				</div>
+				<div class="chainView">○chain</div>
+			</div>
+			<div class="screenWrap">
+				<div class="gameModeView">GAME MODE</div>
+				<div class="gameoverView">
+					<span class="viewText">GAME OVER</span>
+					<span class="gameoverBG"></span>
+					<div><button id="retryBtn" class="gameSelectBtn">reTry</button></div>
+					<div><button id="rankingBtn" class="gameSelectBtn" disabled>Ranking</button></div>
+					<div><button id="backTitleBtn" class="gameSelectBtn">back to title</button></div>
+				</div>
+				<div class="gameScreen">
+					<div class="playerMarkWrap">
+						<div class="playerMark"></div>
+					</div>
+					<div class="playerWrap">
+						<div class="playerFocus"></div>
+					</div>
+					<div class="playerShadowWrap">
+						<div class="playerShadow"></div>
+					</div>
+					<div class="diceWrap"></div>
+					<div class="stage">
+						<div class="mas pos12"></div>
+						<div class="mas pos14"></div>
+						<div class="mas pos21"></div>
+						<div class="mas pos23"></div>
+						<div class="mas pos32"></div>
+						<div class="mas pos34"></div>
+						<div class="mas pos41"></div>
+						<div class="mas pos43"></div>
+						<div class="mas base"></div>
+					</div>
+					<div class="floorWrap">
+						<div class="floor Top"></div>
+						<div class="floor Down"></div>
+						<div class="floor Right"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<form id="sendScore" action="./ranking.php#scrollPoint" method="POST" target="ranking">
+			<!-- データ送信する用の枠 -->
+		</form>
+		<div class="rankingViewWrap shrink">
+			<h1 class="ranking title">RANKING</h1>
+			<iframe class="rankingView" src="./ranking.php" name="ranking"></iframe>
+		</div>
+		<script src="./script/class.js"></script>
+		<script src="./script/script.js"></script>
+	</body>
+</html>
